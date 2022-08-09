@@ -4,4 +4,12 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (newMax - newMin)) + newMin;
 }
 
+export function updateMaxLife(maxLife: number, raceMaxLife: number): number {
+  const newMax = maxLife + getRandomInt(1, 10);
+
+  const validMax = newMax <= raceMaxLife ? newMax : raceMaxLife;
+  
+  return validMax;
+}
+
 export default getRandomInt;
