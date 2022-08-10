@@ -14,7 +14,11 @@ export default class Character implements Fighter {
   private _dexterity: number;
   private _energy: Energy;
   
-  constructor(private _name: string, CharRace = Elf, CharArch = Mage) {
+  constructor(
+    private _name: string,
+    CharRace: any = Elf,
+    CharArch: any = Mage,
+  ) {
     this._name = _name;
     this._dexterity = getRandomInt(1, 10);
     this._race = new CharRace(_name, this._dexterity);
