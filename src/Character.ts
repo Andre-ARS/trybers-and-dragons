@@ -14,11 +14,11 @@ export default class Character implements Fighter {
   private _dexterity: number;
   private _energy: Energy;
   
-  constructor(private _name: string) {
+  constructor(private _name: string, CharRace = Elf, CharArch = Mage) {
     this._name = _name;
     this._dexterity = getRandomInt(1, 10);
-    this._race = new Elf(_name, this._dexterity);
-    this._archetype = new Mage(_name);
+    this._race = new CharRace(_name, this._dexterity);
+    this._archetype = new CharArch(_name);
     this._maxLifePoints = this._race.maxLifePoints / 2;
     this._lifePoints = this._maxLifePoints;
     this._strength = getRandomInt(1, 10);
@@ -60,6 +60,10 @@ export default class Character implements Fighter {
     if (this._lifePoints <= 0) this._lifePoints = -1;
 
     return this._lifePoints;
+  }
+
+  get name(): string {
+    return this._name;
   }
 
   get race(): Race {
